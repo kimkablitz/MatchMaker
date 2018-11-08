@@ -34,11 +34,11 @@
         </div>
         <div class="form-group">
             <label>Profile photo</label>
-            <input type="link" class="form-control" id="photo">
-            <input type="link" class="form-control" id="exampleInputlink1" aria-describedby="linkHelp" placeholder="https://myimages...">
+            <input type="link" class="form-control" id="photo" aria-describedby="linkHelp" placeholder="https://myimages...">
             <small id="linkHelp" class="form-text text-muted">Please enter a live photo address</small>
         </div>
-        <p>On the scale from 1 - 5, answer these questions as accurately as possible and we will help you find your soul mate: </p>
+        <p>On the scale from 1 - 5, answer these questions as accurately as possible and we will help you find your
+            soul mate: </p>
         <label for="q1">How much do you like dogs?</label>
         <select class="form-control" id="q1">
             <option>1</option>
@@ -169,13 +169,15 @@
         $.post("/api/friends", newFriend)
 
             .then(function (data) {
-                if (!data) {
-                    // return true
-                    // alert("successfully added")
+                if (data) {
+                    
+                    alert("successfully added")
+                    
+                }
+                else{
                     alert("oops! something went wrong, please try again")
                 }
 
-                // console.log(data);
                 //clear the form
                 $("#name").val('');
                 $("#photo").val('');

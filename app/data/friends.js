@@ -1,8 +1,8 @@
 var friendList = [
     {
-        name: 'Kimmy Boo',
-        profilePic: 'https://scontent-sea1-1.xx.fbcdn.net/v/t1.0-9/40428406_10216784791787522_6370845674442850304_n.jpg?_nc_cat=104&_nc_ht=scontent-sea1-1.xx&oh=71b02990d3d0836c42117414eca3927f&oe=5C6BBF4F',
-        scores: [
+        "name": 'Kimmy Boo',
+        "photo": 'https://scontent-sea1-1.xx.fbcdn.net/v/t1.0-9/40428406_10216784791787522_6370845674442850304_n.jpg?_nc_cat=104&_nc_ht=scontent-sea1-1.xx&oh=71b02990d3d0836c42117414eca3927f&oe=5C6BBF4F',
+        "scores": [
           "4",
           "5",
           "5",
