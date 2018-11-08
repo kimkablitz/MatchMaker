@@ -25,28 +25,7 @@
 
         </div>
     </div>
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-        
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Modal Header</h4>
-            </div>
-            <div class="modal-body">
-              <p>Some text in the modal.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-          
-        </div>
-      </div>
 
-      <!-- modal ends -->
 
     <div class="form-group container col-md-8">
         <div class="form-group">
@@ -110,6 +89,22 @@
             <option>4</option>
             <option>5</option>
         </select>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img class="img-fluid" alt="Responsive image">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+
+        <!-- modal ends -->
 
         <label for="q7">Question 7</label>
         <select class="form-control" id="q7">
@@ -155,8 +150,10 @@
 <script type="text/javascript">
 
     $("#submit").on("click", function (e) {
-        // $("#myModal").modal();
-        // $(this).simplePopup({ type: "html", htmlSelector: "#myModal" });
+        $("#exampleModalCenter").removeClass("modal fade");
+        $(".close").on("click", function () {
+            $("#exampleModalCenter").addClass("modal fade");
+        })
         e.preventDefault();
 
         var newFriend = {
@@ -169,7 +166,8 @@
         $.post("/api/friends", newFriend)
             .then(function (data) {
                 if (data) {
-                    alert("successfully added")
+                    return true
+                    // alert("successfully added")
                 }
                 else {
                     alert("oops! something went wrong, please try again")
@@ -236,10 +234,17 @@
                 });
                 var index = compatabilityScoresArray.indexOf(closest);
                 console.log(index);
-                console.log(data[index].photo);
+                var photoLink = data[index].photo;
+                var matchesName = data[index].name
                 // Find best match from compatabilityScoresArray
-                //...
-                //...
+                //appending to modal
+                $("img").attr({
+                    src: photoLink,
+                    title: matchesName,
+                    alt: "Your best match"
+                });
+                $(".modal-body").text("You are matched with: " + matchesName);
+                // $(".modal-body").text($("img").attr("title"));
             }
 
             else {
