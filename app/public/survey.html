@@ -35,8 +35,11 @@
         <div class="form-group">
             <label>Profile photo</label>
             <input type="link" class="form-control" id="photo">
+            <input type="link" class="form-control" id="exampleInputlink1" aria-describedby="linkHelp" placeholder="https://myimages...">
+            <small id="linkHelp" class="form-text text-muted">Please enter a live photo address</small>
         </div>
-        <label for="q1">Question 1</label>
+        <p>On the scale from 1 - 5, answer these questions as accurately as possible and we will help you find your soul mate: </p>
+        <label for="q1">How much do you like dogs?</label>
         <select class="form-control" id="q1">
             <option>1</option>
             <option>2</option>
@@ -45,7 +48,7 @@
             <option>5</option>
         </select>
 
-        <label for="q2">Question 2</label>
+        <label for="q2">Do you like spending time outside?</label>
         <select class="form-control" id="q2">
             <option>1</option>
             <option>2</option>
@@ -54,7 +57,7 @@
             <option>5</option>
         </select>
 
-        <label for="q3">Question 3</label>
+        <label for="q3">How much do you enjoy being indoor on a weekend?</label>
         <select class="form-control" id="q3">
             <option>1</option>
             <option>2</option>
@@ -63,7 +66,7 @@
             <option>5</option>
         </select>
 
-        <label for="q4">Question 4</label>
+        <label for="q4">How many pancakes can you eat in one sitting?</label>
         <select class="form-control" id="q4">
             <option>1</option>
             <option>2</option>
@@ -72,7 +75,7 @@
             <option>5</option>
         </select>
 
-        <label for="q5">Question 5</label>
+        <label for="q5">How often do you leave your house during a working week? (in times)</label>
         <select class="form-control" id="q5">
             <option>1</option>
             <option>2</option>
@@ -81,7 +84,7 @@
             <option>5</option>
         </select>
 
-        <label for="q6">Question 6</label>
+        <label for="q6">How many best friends do you have?</label>
         <select class="form-control" id="q6">
             <option>1</option>
             <option>2</option>
@@ -106,7 +109,7 @@
 
         <!-- modal ends -->
 
-        <label for="q7">Question 7</label>
+        <label for="q7">Do you like to drink?</label>
         <select class="form-control" id="q7">
             <option>1</option>
             <option>2</option>
@@ -115,7 +118,7 @@
             <option>5</option>
         </select>
 
-        <label for="q8">Question 8</label>
+        <label for="q8">Do you like eating good food?</label>
         <select class="form-control" id="q8">
             <option>1</option>
             <option>2</option>
@@ -124,7 +127,7 @@
             <option>5</option>
         </select>
 
-        <label for="q9">Question 9</label>
+        <label for="q9">How many icecream cones can you eat on a cold day?</label>
         <select class="form-control" id="q9">
             <option>1</option>
             <option>2</option>
@@ -133,7 +136,7 @@
             <option>5</option>
         </select>
 
-        <label for="q10">Question 10</label>
+        <label for="q10">What is your ideal number of bestfriends should one have?</label>
         <select class="form-control" id="q10">
             <option>1</option>
             <option>2</option>
@@ -164,14 +167,15 @@
         };
 
         $.post("/api/friends", newFriend)
+
             .then(function (data) {
-                if (data) {
-                    return true
+                if (!data) {
+                    // return true
                     // alert("successfully added")
-                }
-                else {
                     alert("oops! something went wrong, please try again")
                 }
+
+                // console.log(data);
                 //clear the form
                 $("#name").val('');
                 $("#photo").val('');
@@ -204,11 +208,11 @@
                     // Add number to outCalculationArray
                     outCalculationArray.push(result);
                 }
-                console.log(result)
-                console.log(outCalculationArray)
+                // console.log(result)
+                // console.log(outCalculationArray)
 
                 var totalCalculation = outCalculationArray.reduce(getSum)
-                console.log(totalCalculation);
+                // console.log(totalCalculation);
                 return totalCalculation;
             };
 
@@ -219,10 +223,10 @@
             if (data.length >= 2) {
                 for (var i = 0; i < data.length - 1; i++) {
                     var currentFriendScores = data[i].scores;
-                    console.log(currentFriendScores);
+                    // console.log(currentFriendScores);
                     var currentDiff = totalDiff(mostRecentAddedScores, currentFriendScores);
                     compatabilityScoresArray.push(currentDiff);
-                    console.log(currentDiff);
+                    // console.log(currentDiff);
 
 
                 }
@@ -233,7 +237,7 @@
                     return (Math.abs(curr - currentDiff) < Math.abs(prev - currentDiff) ? curr : prev);
                 });
                 var index = compatabilityScoresArray.indexOf(closest);
-                console.log(index);
+                // console.log(index);
                 var photoLink = data[index].photo;
                 var matchesName = data[index].name
                 // Find best match from compatabilityScoresArray

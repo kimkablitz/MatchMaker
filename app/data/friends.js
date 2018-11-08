@@ -1,7 +1,7 @@
 var friendList = [
     {
         name: 'Kimmy Boo',
-        profilePic: 'https://pikdo.net/img/micha_kablitz.jpg?aHR0cHM6Ly9pbnN0YWdyYW0uZm11YzItMS5mbmEuZmJjZG4ubmV0L3ZwL2MxZDkxYjk5NjNiZDMwNjg3NDc3YmMxMDRlYTY3NjJjLzVDMTFCMDU1L3Q1MS4yODg1LTE5L3MxNTB4MTUwLzE4MzgwMjE4XzM2NjQ1NjM2Mzc1MTE5MF8xMTk2OTgzMTMxNzE0ODc5NDg4X2EuanBn',
+        profilePic: 'https://scontent-sea1-1.xx.fbcdn.net/v/t1.0-9/40428406_10216784791787522_6370845674442850304_n.jpg?_nc_cat=104&_nc_ht=scontent-sea1-1.xx&oh=71b02990d3d0836c42117414eca3927f&oe=5C6BBF4F',
         scores: [
           "4",
           "5",
@@ -14,7 +14,23 @@ var friendList = [
           "3",
           "4"
         ]
-      }
+      },
+      {
+        "name": "cibi",
+        "photo": "https://i.ytimg.com/vi/3ggIHfwkIWM/maxresdefault.jpg",
+        "scores": [
+        "5",
+        "3",
+        "4",
+        "1",
+        "3",
+        "5",
+        "4",
+        "2",
+        "5",
+        "1"
+        ]
+        }
     
 ];
 module.exports = friendList;
