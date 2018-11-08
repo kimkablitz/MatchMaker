@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>MatchMaker App</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-3">Match Maker</h1>
+      <p class="lead">Let us be your Cupid</p>
+      <hr class="my-2">
+      <p>MatchMaker uses data Analyse to help you find your best match. Start by answering 10 questions about who you
+        are looking for and we will help you find your compatibility</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="/survey" role="button">Start Survey</a>
+      </p>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+
+    // $.get("/api/friends", function (friendsData) {
+    //   console.log("inside GET friends");
+    //   console.log(friendsData);
+    // });
+
+
+    function getFriendsData() {
+    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    $.ajax({ url: "/api/friends", method: "GET" })
+      .then(function(friendsData) {
+
+        // Here we then log the friendsData to console, where it will show up as an object.
+        console.log(friendsData);
+        console.log("------------------------------------");
+
+        // Loop through and display each of the customers
+        // for (var i = 0; i < friendsData.length; i++) {
+
+        //   // Get a reference to the tableList element and populate it with tables
+        //   var tableList = $("#tableList");
+
+        //   // Then display the fields in the HTML (Section Name, Date, URL)
+        //   var listItem = $("<li class='list-group-item mt-4'>");
+
+        //   listItem.append(
+        //     $("<h2>").text("Table #" + (i + 1)),
+        //     $("<hr>"),
+        //     $("<h2>").text("ID: " + friendsData[i].customerID),
+        //     $("<h2>").text("Name: " + friendsData[i].customerName),
+        //     $("<h2>").text("Email: " + friendsData[i].customerEmail),
+        //     $("<h2>").text("Phone: " + friendsData[i].phoneNumber)
+        //   );
+
+        //   tableList.append(listItem);
+        // }
+      });
+      getFriendsData();
+  }
+  </script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+    crossorigin="anonymous"></script> -->
+
+
+</html>

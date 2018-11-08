@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Survey Page</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-3">Match Maker</h1>
+            <p class="lead">Let us be your Cupid</p>
+            <hr class="my-2">
+            <p>MatchMaker uses data Analyse to help you find your best match. Start by answering 10 questions about who
+                you
+                are looking for and we will help you find your compatibility</p>
+
+        </div>
+    </div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+              <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- modal ends -->
+
+    <div class="form-group container col-md-8">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="email" class="form-control" id="name">
+        </div>
+        <div class="form-group">
+            <label>Profile photo</label>
+            <input type="link" class="form-control" id="photo">
+        </div>
+        <label for="q1">Question 1</label>
+        <select class="form-control" id="q1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+
+        <label for="q2">Question 2</label>
+        <select class="form-control" id="q2">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+
+        <label for="q3">Question 3</label>
+        <select class="form-control" id="q3">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+
+        <label for="q4">Question 4</label>
+        <select class="form-control" id="q4">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+
+        <label for="q5">Question 5</label>
+        <select class="form-control" id="q5">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+
+        <label for="q6">Question 6</label>
+        <select class="form-control" id="q6">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+
+        <label for="q7">Question 7</label>
+        <select class="form-control" id="q7">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+
+        <label for="q8">Question 8</label>
+        <select class="form-control" id="q8">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+
+        <label for="q9">Question 9</label>
+        <select class="form-control" id="q9">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+
+        <label for="q10">Question 10</label>
+        <select class="form-control" id="q10">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+
+        <a class="btn btn-primary btn-md" id="submit" role="button">Submit</a>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+
+    $("#submit").on("click", function (e) {
+        // $("#myModal").modal();
+        // $(this).simplePopup({ type: "html", htmlSelector: "#myModal" });
+        e.preventDefault();
+
+        var newFriend = {
+            name: $("#name").val().trim(),
+            photo: $("#photo").val(),
+            scores: [($("#q1").val()), ($("#q2").val()), ($("#q3").val()), ($("#q4").val()), ($("#q5").val()), ($("#q6").val()), ($("#q7").val()), ($("#q8").val()),
+            ($("#q9").val()), ($("#q10").val())]
+        };
+
+        $.post("/api/friends", newFriend)
+            .then(function (data) {
+                if (data) {
+                    alert("successfully added")
+                }
+                else {
+                    alert("oops! something went wrong, please try again")
+                }
+                //clear the form
+                $("#name").val('');
+                $("#photo").val('');
+                $("#q1").val('');
+                $("#q2").val('');
+                $("#q3").val('');
+                $("#q4").val('');
+                $("#q5").val('');
+                $("#q6").val('');
+                $("#q7").val('');
+                $("#q8").val('');
+                $("#q9").val('');
+                $("#q10").val('');
+
+            });
+
+        $.get("/api/friends", function (data) {
+            function totalDiff(firstFriendsScoresArray, secondFriendsScoresArray) {
+                function getSum(a, b) {
+                    return a + b;
+                }
+
+                var outCalculationArray = []; // this will be 10 numbers long 
+                for (var i = 0; i < firstFriendsScoresArray.length; i++) {
+                    const friendOneScore = firstFriendsScoresArray[i];
+                    const friendTwoScore = secondFriendsScoresArray[i];
+
+                    // Do good math
+                    var result = Math.abs(friendOneScore - friendTwoScore);
+                    // Add number to outCalculationArray
+                    outCalculationArray.push(result);
+                }
+                console.log(result)
+                console.log(outCalculationArray)
+
+                var totalCalculation = outCalculationArray.reduce(getSum)
+                console.log(totalCalculation);
+                return totalCalculation;
+            };
+
+
+            const mostRecentAddedScores = data[data.length - 1].scores;
+            var compatabilityScoresArray = [];
+
+            if (data.length >= 2) {
+                for (var i = 0; i < data.length - 1; i++) {
+                    var currentFriendScores = data[i].scores;
+                    console.log(currentFriendScores);
+                    var currentDiff = totalDiff(mostRecentAddedScores, currentFriendScores);
+                    compatabilityScoresArray.push(currentDiff);
+                    console.log(currentDiff);
+
+
+                }
+
+                // console.log(compatabilityScoresArray)
+                // console.log(closest);
+                var closest = compatabilityScoresArray.reduce(function (prev, curr) {
+                    return (Math.abs(curr - currentDiff) < Math.abs(prev - currentDiff) ? curr : prev);
+                });
+                var index = compatabilityScoresArray.indexOf(closest);
+                console.log(index);
+                console.log(data[index].photo);
+                // Find best match from compatabilityScoresArray
+                //...
+                //...
+            }
+
+            else {
+                alert("need more members signed up to find matches")
+            }
+
+        });
+
+    });
+
+
+</script>
